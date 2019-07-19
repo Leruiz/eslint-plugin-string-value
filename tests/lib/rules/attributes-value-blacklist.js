@@ -9,12 +9,23 @@ const tester = new RuleTester({
 tester.run('attributes-value-blacklist', rule, {
   valid: [
     {
-      code: '<template><img :src="url"/></template> <script> export default { data() {return { url: "http://"}}}</script>',
-      options: [{
-        tagName: 'img',
-        attributeName: 'src',
-        regexpPatterns: [/e/]
-      }]
+      code: '<template><img :src="url"/><img alt="http://123e123.com"/></template> <script> export default { data() {return { url: "http://"}}}</script>',
+      options: [
+        {
+          blacklist: [
+            {
+              tagName: 'img',
+              attributeName: 'src',
+              patterns: [/e/]
+            },
+            {
+              tagName: 'p',
+              attributeName: 'src',
+              patterns: [/e/]
+            },
+          ]
+        }
+      ]
     },
   ],
   invalid: [
