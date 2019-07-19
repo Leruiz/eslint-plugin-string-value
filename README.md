@@ -44,6 +44,8 @@ Then configure the rules you want to use under the rules section.
 ## Supported Rules
 
 * Fill in provided rules here
+1. string-value/blacklist
+2. string-value/attributes-value-blacklist
 
 
 
