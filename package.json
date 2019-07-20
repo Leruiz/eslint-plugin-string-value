@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-string-value",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "check string value",
   "keywords": [
     "eslint",
