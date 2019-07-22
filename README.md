@@ -66,15 +66,6 @@ Then configure the rules you want to use under the rules section.
     This rule works for **vue template** file, to prevent to use string values in black list in designated tags and attributes.
 
     #### Options
-    - normal usage, like `blacklist`
-        ```js
-            {
-                patterns: [],
-                ignoredValues: [],
-            }
-
-        ```
-
     - Different black lists can be applied in diffrent tags and attributes. It can be considered as a group of *blacklist* rules.
         ```js
         {
@@ -91,7 +82,9 @@ Then configure the rules you want to use under the rules section.
         - `blacklist` (`array`): Array of objects provides detailed options of blacklist rules. In each rule,
 
             - `patterns` and `ignoredValues` are the same as above usage.
-            - `tagName` (`string`) and  `attributeName` (`string`): A string provides target tag and attribute of this blacklist rule
+            - `tagName` (`string`) and  `attributeName` (`string`): A string provides target tag and attribute of this blacklist rule, 
+                
+               +  *`tagName(attributeName) = *` matches all tags(attributes)*
         
         ----
         *example*: 
