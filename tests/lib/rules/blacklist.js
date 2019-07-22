@@ -13,13 +13,13 @@ ruleTester.run('string-value-blacklist', rule, {
     {
       code: ' var a = "abc";',
       options: [{
-        regexpPatterns: [/d/, /e/]
+        patterns: [/d/, /e/]
       }]
     },
     {
       code: ' var a = "abc"; ',
       options: [{
-        regexpPatterns: [/a/],
+        patterns: [/a/],
         ignoreValues: ['abc']
       }]
     }
@@ -29,7 +29,7 @@ ruleTester.run('string-value-blacklist', rule, {
     {
       code: ' var a = "abc"; ',
       options: [{
-        regexpPatterns: [/a/]
+        patterns: [/a/]
       }],
       errors: [{
         message: 'error',
@@ -39,7 +39,7 @@ ruleTester.run('string-value-blacklist', rule, {
     {
       code: ' var arr = ["abc"]; ',
       options: [{
-        regexpPatterns: [ /a/]
+        patterns: [ /a/]
       }],
       errors: [{
         message: 'error',
@@ -49,13 +49,13 @@ ruleTester.run('string-value-blacklist', rule, {
     {
       code: ' var obj = { str: "abc" };',
       options: [{
-        regexpPatterns: [/a/],
+        patterns: [/a/],
       }]
     },
     {
       code: ' function () { return "abc" }',
       options: [{
-        regexpPatterns: [/a/],
+        patterns: [/a/],
       }]
     },
   ]
