@@ -8,19 +8,25 @@ const ruleTester = new RuleTester({
   }
 })
 
-ruleTester.run('string-value-blacklist', rule, {
+ruleTester.run('blacklist', rule, {
   valid: [
     {
       code: ' var a = "abc";',
       options: [{
-        regexpPatterns: [/d/, /e/]
+        patterns: [/d/, /e/]
       }]
     },
     {
       code: ' var a = "abc"; ',
       options: [{
-        regexpPatterns: [/a/],
+        patterns: [/a/],
         ignoreValues: ['abc']
+      }]
+    },
+    {
+      code: ' // eslint-disable string-value/blacklist var a = "abc"; ',
+      options: [{
+        patterns: [/a/],
       }]
     }
   ],
@@ -29,33 +35,41 @@ ruleTester.run('string-value-blacklist', rule, {
     {
       code: ' var a = "abc"; ',
       options: [{
-        regexpPatterns: [/a/]
+        patterns: [/a/]
       }],
       errors: [{
-        message: 'error',
-        rule: 'string-value-blacklist'
+        message: '\'abc\' is in blacklist.',
+        rule: 'blacklist'
       }]
     },
     {
       code: ' var arr = ["abc"]; ',
       options: [{
-        regexpPatterns: [ /a/]
+        patterns: [ /a/]
       }],
       errors: [{
-        message: 'error',
-        rule: 'string-value-blacklist'
+        message: '\'abc\' is in blacklist.',
+        rule: 'blacklist'
       }]
     },
     {
       code: ' var obj = { str: "abc" };',
       options: [{
-        regexpPatterns: [/a/],
+        patterns: [/a/],
+      }],
+      errors: [{
+        message: '\'abc\' is in blacklist.',
+        rule: 'blacklist'
       }]
     },
     {
-      code: ' function () { return "abc" }',
+      code: ' function fn() { return "abc" }',
       options: [{
-        regexpPatterns: [/a/],
+        patterns: [/a/],
+      }],
+      errors: [{
+        message: '\'abc\' is in blacklist.',
+        rule: 'blacklist'
       }]
     },
   ]
